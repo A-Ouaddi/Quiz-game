@@ -4,7 +4,6 @@ import random
 import csv
 import os
 
-# ---------------------- الأسئلة بالعربية --------------------------
 questions_ar = [
     {
         "question": "ما هي أفضل طريقة لحماية كلمة المرور الخاصة بك؟",
@@ -73,7 +72,6 @@ questions_ar = [
     }
 ]
 
-# ---------------------- الأسئلة بالفرنسية --------------------------
 questions_fr = [
     {
         "question": "Quelle est la meilleure façon de protéger votre mot de passe ?",
@@ -144,7 +142,6 @@ questions_fr = [
 
 
 
-# ---------------------- التطبيق الرئيسي --------------------------
 class QuizApp:
     def __init__(self, root):
         self.root = root
@@ -160,7 +157,7 @@ class QuizApp:
         self.correct_answer = ""
         self.question_order = []
 
-        # نبدأ باختيار اللغة أولاً
+  
         self.choose_language()
 
     def choose_language(self):
@@ -169,12 +166,12 @@ class QuizApp:
 
         ar_button = tk.Button(self.root, text="🇲🇦 العربية", font=("Arial", 14), width=20, command=lambda: self.set_language("ar"))
         ar_button.pack(pady=10)
-        # إضافة تأثير الماوس على الأزرار
+    
         self.add_hover_effect(ar_button)
         
         fr_button = tk.Button(self.root, text="🇫🇷 Français", font=("Arial", 14), width=20, command=lambda: self.set_language("fr"))
         fr_button.pack(pady=10)
-        # إضافة تأثير الماوس على الأزرار
+      
         self.add_hover_effect(fr_button)
 
     def set_language(self, lang):
@@ -185,7 +182,7 @@ class QuizApp:
     def setup_name_screen(self):
         self.clear_window()
         
-        # عرض النص حسب اللغة المختارة
+     
         name_prompt = ": أدخل اسمك" if self.language == "ar" else " Entrez votre nom :"
         button_text = "التالي" if self.language == "ar" else "Suivant"
         
@@ -195,7 +192,7 @@ class QuizApp:
 
         next_button = tk.Button(self.root, text=button_text, font=("Arial", 14), bg="#4CAF50", fg="white", command=self.start_quiz)
         next_button.pack(pady=20)
-        # إضافة تأثير الماوس على الزر
+     
         self.add_hover_effect(next_button, bg_color="#4CAF50", hover_color="#45a049")
 
     def start_quiz(self):
@@ -208,7 +205,7 @@ class QuizApp:
         self.q_index = 0
         self.score = 0
         
-        # إنشاء ترتيب عشوائي للأسئلة
+     
         self.question_order = list(range(len(self.questions)))
         random.shuffle(self.question_order)
         
@@ -225,21 +222,21 @@ class QuizApp:
         
         tk.Label(self.root, text=f"{current_q['question']}", wraplength=500, font=("Arial", 14)).pack(pady=30)
 
-        # نسخ الخيارات وخلطها
+    
         options = current_q['options'].copy()
         random.shuffle(options)
         
-        # تتبع الإجابة الصحيحة
+     
         self.correct_answer = current_q['answer']
         
-        # إنشاء أزرار للخيارات
+     
         self.buttons = []
         for option in options:
             btn = tk.Button(self.root, text=f"{option}", font=("Arial", 12), width=50,
                            command=lambda opt=option: self.check_answer(opt))
             btn.pack(pady=5)
             self.buttons.append(btn)
-            # إضافة تأثير الماوس على كل زر خيار
+         
             self.add_hover_effect(btn)
 
     def check_answer(self, chosen):
@@ -249,15 +246,12 @@ class QuizApp:
         self.show_question()
 
     def finish_quiz(self):
-        # حفظ النتيجة أولاً
         self.save_score()
         
-        # الحصول على معلومات الترتيب
         rank, players = self.get_rank()
         
         self.clear_window()
 
-        # --- العناوين ---
         title = "📊 النتيجة النهائية" if self.language == "ar" else "📊 Résultat final"
         name_text = f"الاسم: {self.name}" if self.language == "ar" else f"Nom : {self.name}"
         score_text = f"النقاط: {self.score} / {len(self.questions)}" if self.language == "ar" else f"Score : {self.score} / {len(self.questions)}"
@@ -270,7 +264,6 @@ class QuizApp:
         tk.Label(self.root, text=rank_text, font=("Arial", 14)).pack(pady=10)
         tk.Label(self.root, text=table_title, font=("Arial", 14, "underline")).pack(pady=10)
 
-        # --- عرض الجدول ---
         table_frame = tk.Frame(self.root)
         table_frame.pack(pady=10)
 
@@ -278,16 +271,13 @@ class QuizApp:
         for col, header in enumerate(headers):
             tk.Label(table_frame, text=header, font=("Arial", 12, "bold"), width=15, borderwidth=1, relief="solid").grid(row=0, column=col)
 
-        for i, p in enumerate(players[:10], start=1):  # عرض أعلى 10
-            # تحديد ما إذا كان هذا هو اللاعب الحالي
+        for i, p in enumerate(players[:10], start=1): 
             is_current_player = (p["name"] == self.name and p["score"] == self.score)
             
-            # تعيين الألوان والتنسيق بناءً على ما إذا كان هذا هو اللاعب الحالي
-            bg_color = "#ffff99" if is_current_player else "white"  # خلفية صفراء للاعب الحالي
-            fg_color = "#000000" if is_current_player else "#000000"  # لون النص الأسود للجميع
-            font_style = ("Arial", 12, "bold") if is_current_player else ("Arial", 12)  # نص غامق للاعب الحالي
+            bg_color = "#ffff99" if is_current_player else "white"  
+            fg_color = "#000000" if is_current_player else "#000000"  
+            font_style = ("Arial", 12, "bold") if is_current_player else ("Arial", 12) 
             
-            # إنشاء تسميات الصف مع تنسيق خاص
             tk.Label(table_frame, text=str(i), font=font_style, width=15, 
                     borderwidth=1, relief="solid", bg=bg_color, fg=fg_color).grid(row=i, column=0)
             tk.Label(table_frame, text=p["name"], font=font_style, width=15, 
@@ -295,43 +285,34 @@ class QuizApp:
             tk.Label(table_frame, text=str(p["score"]), font=font_style, width=15, 
                     borderwidth=1, relief="solid", bg=bg_color, fg=fg_color).grid(row=i, column=2)
             
-            # إضافة تأثير وميض للاعب الحالي
             if is_current_player:
                 self.flash_row(table_frame, i, bg_color)
 
-        # --- زر إعادة اللعب ---
         restart_text = "🔄 العب مرة أخرى" if self.language == "ar" else "🔄 Jouer à nouveau"
         restart_button = tk.Button(self.root, text=restart_text, font=("Arial", 14), bg="#4CAF50", fg="white", 
                  command=self.choose_language)
         restart_button.pack(pady=20)
-        # إضافة تأثير الماوس على زر إعادة اللعب
         self.add_hover_effect(restart_button, bg_color="#4CAF50", hover_color="#45a049")
 
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()
             
-    # دالة إضافة تأثير عند تمرير المؤشر فوق الزر
     def add_hover_effect(self, button, bg_color=None, hover_color="#e0e0e0"):
         original_bg = bg_color if bg_color else button["background"]
         
-        # تغيير اللون عند مرور المؤشر فوق الزر
         button.bind("<Enter>", lambda e: button.config(background=hover_color, cursor="hand2"))
-        # إعادة اللون الأصلي عند خروج المؤشر من الزر
         button.bind("<Leave>", lambda e: button.config(background=original_bg))
         
-    # دالة لإضافة تأثير الوميض للصف الحالي في الجدول
     def flash_row(self, table_frame, row_num, base_color):
-        # الألوان التي سيتغير بينها الصف
-        colors = ["#ffff99", "#fff066", "#ffff99"]  # تدرج ألوان أصفر
+        colors = ["#ffff99", "#fff066", "#ffff99"]  
         labels = [widget for widget in table_frame.grid_slaves() if int(widget.grid_info()["row"]) == row_num]
         
         def flash_cycle(index=0):
-            if index < len(colors) * 2:  # كرر دورة الألوان مرتين
+            if index < len(colors) * 2:  
                 color = colors[index % len(colors)]
                 for label in labels:
                     label.config(bg=color)
-                # استدعاء الدالة مرة أخرى بعد 500 مللي ثانية
                 self.root.after(500, lambda: flash_cycle(index + 1))
 
     def save_score(self):
@@ -351,7 +332,6 @@ class QuizApp:
         filename = "quiz_scores.csv"
         players = []
         
-        # إنشاء الملف إذا لم يكن موجودًا
         if not os.path.isfile(filename):
             with open(filename, mode='w', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
@@ -364,18 +344,14 @@ class QuizApp:
                     try:
                         players.append({"name": row["Name"], "score": int(row["Score"])})
                     except (ValueError, KeyError):
-                        # تخطي الصفوف غير الصالحة
                         continue
                         
-            # إضافة اللاعب الحالي إذا لم يكن موجودًا بالفعل في القائمة
             current_player = {"name": self.name, "score": self.score}
             if current_player not in players:
                 players.append(current_player)
                 
-            # ترتيب حسب النقاط (الأعلى أولاً)
             players.sort(key=lambda x: x["score"], reverse=True)
             
-            # البحث عن رتبة اللاعب
             for i, p in enumerate(players):
                 if p["name"] == self.name and p["score"] == self.score:
                     return i + 1, players
@@ -386,7 +362,6 @@ class QuizApp:
             return 1, [{"name": self.name, "score": self.score}]
 
 
-# ---------------------- تشغيل البرنامج --------------------------
 if __name__ == "__main__":
     root = tk.Tk()
     app = QuizApp(root)
