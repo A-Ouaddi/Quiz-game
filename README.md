@@ -16,14 +16,14 @@ An interactive quiz game to test your knowledge of digital security principles a
 ### الطريقة الأولى: التنزيل المباشر
 1. تأكد من تثبيت Python على جهازك  
    Make sure you have Python installed
-2. انسخ ملف البرنامج (`quiz_game.py`)  
-   Copy the program file (`quiz_game.py`)
+2. انسخ ملف البرنامج (`Quiz-game.py`)  
+   Copy the program file (`Quiz-game.py`)
 3. افتح نافذة الأوامر (Terminal/CMD) في مجلد الملف  
    Open command window in the file directory
 4. اكتب الأمر التالي:  
    Run the following command:
 ```bash
-python quiz_game.py
+python Quiz-game.py
 ```
 
 ### الطريقة الثانية: عبر GitHub
