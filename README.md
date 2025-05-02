@@ -1,4 +1,3 @@
-
 # 🛡️ لعبة الأمان الرقمي - Digital Security Quiz
 
 لعبة تفاعلية لاختبار معرفتك بمبادئ الأمان الرقمي والحماية من المخاطر الإلكترونية.
@@ -8,6 +7,8 @@ An interactive quiz game to test your knowledge of digital security principles a
 ## 🌍 اللغات المدعومة | Supported Languages
 - العربية (Arabic)
 - الفرنسية (French)
+- English (coming soon)
+
 ## ⚙️ متطلبات التشغيل | Requirements
 - Python 3.x
 - مكتبة tkinter (عادة تكون مثبتة مسبقًا مع Python)
@@ -29,8 +30,8 @@ python quiz_game.py
 
 ### الطريقة الثانية: عبر GitHub
 ```bash
-git clone https://github.com/yourusername/digital-security-quiz.git
-cd digital-security-quiz
+git clone https://github.com/A-Ouaddi/Quiz-game.git
+cd Quiz-game
 python quiz_game.py
 ```
 
@@ -61,3 +62,6 @@ python quiz_game.py
   Results are automatically saved in `quiz_scores.csv`
 - الأسئلة مختارة بعناية لتوعية المستخدمين بمخاطر الأمان الرقمي  
   Questions are carefully selected to educate users about digital security risks
+
+استمتع وتعلم كيف تحمي نفسك في العالم الرقمي! 🚀  
+Enjoy and learn how to protect yourself in the digital world! 🚀
