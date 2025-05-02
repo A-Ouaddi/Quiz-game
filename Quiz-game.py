@@ -164,12 +164,12 @@ class QuizApp:
         self.clear_window()
         tk.Label(self.root, text="🌐 اختر اللغة / Choisissez la langue :", font=("Arial", 16)).pack(pady=20)
 
-        ar_button = tk.Button(self.root, text="🇲🇦 العربية", font=("Arial", 14), width=20, command=lambda: self.set_language("ar"))
+        ar_button = tk.Button(self.root, text=" العربية", font=("Arial", 14), width=20, command=lambda: self.set_language("ar"))
         ar_button.pack(pady=10)
     
         self.add_hover_effect(ar_button)
         
-        fr_button = tk.Button(self.root, text="🇫🇷 Français", font=("Arial", 14), width=20, command=lambda: self.set_language("fr"))
+        fr_button = tk.Button(self.root, text=" Français", font=("Arial", 14), width=20, command=lambda: self.set_language("fr"))
         fr_button.pack(pady=10)
       
         self.add_hover_effect(fr_button)
