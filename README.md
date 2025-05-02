@@ -7,8 +7,6 @@ An interactive quiz game to test your knowledge of digital security principles a
 ## 🌍 اللغات المدعومة | Supported Languages
 - العربية (Arabic)
 - الفرنسية (French)
-- English (coming soon)
-
 ## ⚙️ متطلبات التشغيل | Requirements
 - Python 3.x
 - مكتبة tkinter (عادة تكون مثبتة مسبقًا مع Python)
